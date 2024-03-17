@@ -1,0 +1,30 @@
+body{
+    margin-top: 0;
+    margin-left: 70px;
+    margin-right: 70px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.sec1{
+    height: 323px;
+    background-color: #f8c4a4;
+    
+   
+}
+.pe1{
+    margin-top:     0;
+    padding-left: 100px;
+    padding-top: 150px;
+font-size: 100px;
+}
+#firstpic{
+    float: right;    
+    margin: 0 0 0 15px;   
+}
+.kontejner{
+    display: flex;
+    align-items: right;
+    justify-content: right
+}
+.middletext{
+    font-size: 30px;
+}

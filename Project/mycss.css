@@ -25,7 +25,6 @@ li a:hover:not(.active) {
 .active {
   background-color: #04AA6D;
 }
-#pic{
-    width: 100%;
-
+.section1{
+    background-color: bisque;
 }
