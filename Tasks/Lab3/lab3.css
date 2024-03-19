@@ -1,11 +1,11 @@
 body{
     margin-top: 0;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 80px;
+    margin-right: 80px;
     font-family: 'Times New Roman', Times, serif;
 }
 .sec1{
-    height: 323px;
+    height: 360px;
     background-color: #f8c4a4;
     
    
@@ -13,12 +13,14 @@ body{
 .pe1{
     margin-top:     0;
     padding-left: 100px;
-    padding-top: 150px;
-font-size: 100px;
+    padding-top: 0px;
+
+font-size: 160px;
 }
 #firstpic{
     float: right;    
     margin: 0 0 0 15px;   
+    height:360px;
 }
 .kontejner{
     display: flex;
@@ -26,5 +28,29 @@ font-size: 100px;
     justify-content: right
 }
 .middletext{
+    font-size: 45px;
+}
+.container{
+    background-color:#f5f5eb;
+    display: flex;
+    justify-content: space-evenly;
+}
+figcaption{
+    text-align: center;
+    font-size:xx-large;
+}
+.bottom{
+    height: 323px;
+    background-color:#f8c4a4;
+    text-align: center;
+}
+.bottomt{
+    font-size: 50px;
+   
+    
+    padding-top: 50px;
+}
+.lowertext{
     font-size: 30px;
+    
 }
