@@ -5,3 +5,8 @@
 span {
   color: rgb(90, 158, 91);
 }
+
+* {
+  font-family: 'Josefin Sans', sans-serif !important;
+
+}
