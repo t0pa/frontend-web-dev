@@ -11393,3 +11393,42 @@ body.dark-theme .accordion-content {
 }
 
 
+.error {
+  color: red; /* Change text color for error messages */
+  font-size: 14px; /* Change font size for error messages */
+  margin-top: 5px; /* Add spacing between input and error message */
+}
+
+.valid {
+  color: green; /* Change text color for valid input fields */
+}
+
+/* Custom styles for specific input fields */
+#name.error {
+  border-color: red; /* Change border color for invalid name input */
+}
+
+#email.error {
+  border-color: red; /* Change border color for invalid email input */
+}
+
+#phone.error {
+  border-color: red; /* Change border color for invalid phone input */
+}
+
+#message.error {
+  border-color: red; /* Change border color for invalid message input */
+}
+
+#password.error {
+  border-color: red; /* Change border color for invalid password input */
+}
+
+#password-strength {
+  color: blue; /* Change text color for password strength indicator */
+}
+
+/* Additional custom styles */
+.alert {
+  margin-top: 10px; /* Add spacing between form and alert messages */
+}
