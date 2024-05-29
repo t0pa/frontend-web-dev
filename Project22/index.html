@@ -25,6 +25,11 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+<!-- Toastr JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
 </head>
 
@@ -514,11 +519,30 @@
             }
         },
         submitHandler: function(form) {
-            // If form is valid, show success message
-            $('#submitSuccessMessage').removeClass('d-none');
-            // Here, you can save the form data to a file or perform any other action.
-            return false; // Prevent the form from submitting
+    // Serialize form data
+    var formData = $(form).serialize();
+
+    // Simulate AJAX request
+    $.ajax({
+        type: "POST", // Or "GET" depending on your requirement
+        url: "your_dummy_endpoint", // This URL can be anything since we're not actually sending data to a server
+        data: formData,
+        success: function(response) {
+            // Show success message using toastr
+            toastr.success('Form submission successful! Data is saved.');
+
+            // Reset form
+            form.reset();
         },
+        error: function(xhr, status, error) {
+            // Show error message using toastr or other means
+            toastr.error('Form submission failed! Please try again later.');
+        }
+    });
+
+    return false; // Prevent the form from submitting
+},
+
         errorPlacement: function(error, element) {
             // Custom error placement
             if (element.attr("name") == "password") {
