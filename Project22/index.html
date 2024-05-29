@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+ 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -15,6 +15,13 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js"></script>
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
@@ -334,6 +341,7 @@
     </section>
     <!-- Clients-->
     <div class="py-5">
+        
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-3 col-sm-6 my-3">
@@ -355,83 +363,195 @@
             </div>
         </div>
     </div>
-    <!-- Contact-->
+ 
+
     <section class="page-section" id="contact">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Contact Us</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h3 class="section-subheading text-muted">Feel free to ask any questions.</h3>
             </div>
-            <!-- * * * * * * * * * * * * * * *-->
-            <!-- * * SB Forms Contact Form * *-->
-            <!-- * * * * * * * * * * * * * * *-->
-            <!-- This form is pre-integrated with SB Forms.-->
-            <!-- To make this form functional, sign up at-->
-            <!-- https://startbootstrap.com/solution/contact-forms-->
-            <!-- to get an API token!-->
             <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                <div class="row align-items-stretch mb-5">
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <!-- Name input-->
-                            <input class="form-control" id="name" type="text" placeholder="Your Name *"
-                                data-sb-validations="required" />
+                            <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required">
                             <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                         </div>
                         <div class="form-group">
-                            <!-- Email address input-->
-                            <input class="form-control" id="email" type="email" placeholder="Your Email *"
-                                data-sb-validations="required,email" />
+                            <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email">
                             <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                             <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                         </div>
-                        <div class="form-group mb-md-0">
-                            <!-- Phone number input-->
-                            <input class="form-control" id="phone" type="tel" placeholder="Your Phone *"
-                                data-sb-validations="required" />
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
-                            </div>
+                        <div class="form-group">
+                            <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required">
+                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        </div>
+                        <div class="form-group">
+                            <!-- Date picker input -->
+                            <input class="form-control" id="date" type="text" placeholder="Preferred Contact Date *" data-sb-validations="required,date">
+                            <div class="invalid-feedback" data-sb-feedback="date:required">A date is required.</div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group form-group-textarea mb-md-0">
-                            <!-- Message input-->
-                            <textarea class="form-control" id="message" placeholder="Your Message *"
-                                data-sb-validations="required"></textarea>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.
-                            </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="password" type="password" placeholder="Your Password *" data-sb-validations="required,passwordStrength">
+                            <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
+                            <div id="password-strength" class="text-muted" style="color: aliceblue !important;">Password strength: </div>
                         </div>
                     </div>
                 </div>
-                <!-- Submit success message-->
-                <!---->
-                <!-- This is what your users will see when the form-->
-                <!-- has successfully submitted-->
-                <div class="d-none" id="submitSuccessMessage">
-                    <div class="text-center text-white mb-3">
-                        <div class="fw-bolder">Form submission successful!</div>
-                        To activate this form, sign up at
-                        <br />
-                        <a
-                            href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send Message</button>
+                </div>
+                <div class="text-center">
+                    <!-- Success Message -->
+                    <div class="alert alert-success mt-3 d-none" id="submitSuccessMessage" role="alert">
+                        Form submission successful! To activate this form, sign up at <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    </div>
+                    <!-- Error Message -->
+                    <div class="alert alert-danger mt-3 d-none" id="submitErrorMessage" role="alert">
+                        Error sending message!
                     </div>
                 </div>
-                <!-- Submit error message-->
-                <!---->
-                <!-- This is what your users will see when there is-->
-                <!-- an error submitting the form-->
-                <div class="d-none" id="submitErrorMessage">
-                    <div class="text-center text-danger mb-3">Error sending message!</div>
-                </div>
-                <!-- Submit Button-->
-                <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled"
-                        id="submitButton" type="submit">Send Message</button></div>
             </form>
         </div>
     </section>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize date picker
+            $('#date').datepicker({
+                format: 'mm/dd/yyyy',
+                autoclose: true
+            });
+
+            // Password strength indicator
+            $('#password').on('keyup', function() {
+                var password = $(this).val();
+                var strength = checkPasswordStrength(password);
+                $('#password-strength').text('Password strength: ' + strength);
+            });
+            
+            function checkPasswordStrength(password) {
+                var strength = 0;
+
+                // If password contains both lower and uppercase characters, increase strength
+                if (password.match(/[a-z]/) && password.match(/[A-Z]/)) {
+                    strength += 1;
+                }
+
+                // If password contains at least one number, increase strength
+                if (password.match(/\d+/)) {
+                    strength += 1;
+                }
+
+                // If password contains at least one special character, increase strength
+                if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)) {
+                    strength += 1;
+                }
+
+                // If password length is greater than or equal to 8, increase strength
+                if (password.length >= 8) {
+                    strength += 1;
+                }
+
+                // Determine password strength based on the strength score
+                if (strength < 2) {
+                    return 'WEAK';
+                } else if (strength == 2) {
+                    return 'MEDIUM';
+                } else {
+                    return 'STRONG';
+                }
+            }
+        });
+    </script>
+
+
+
+    <section class="page-section" id="faq">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Frequently Asked Questions</h2>
+                <h3 class="section-subheading text-muted">Find answers to common questions below.</h3>
+            </div>
+    
+            <!-- Accordion Menu for FAQ -->
+            <div class="accordion">
+                <button class="accordion-button bg-dark">What is your return policy?</button>
+                <div class="accordion-content">
+                    <p>Our return policy allows you to return items within 30 days of purchase.</p>
+                </div>
+                <button class="accordion-button bg-dark">How do I track my order?</button>
+                <div class="accordion-content">
+                    <p>You can track your order using the tracking number provided in your confirmation email.</p>
+                </div>
+                <button class="accordion-button bg-dark">Do you offer customer support?</button>
+                <div class="accordion-content">
+                    <p>Yes, we offer 24/7 customer support through our hotline and email.</p>
+                </div>
+            </div>
+    
+            <!-- Content Toggle for Additional FAQs -->
+            <div class="toggle-section">
+                <button class="toggle-button bg-dark" data-target="#additional-faq1"> What payment methods do you accept?</button>
+                <div class="toggle-content bg-secondary" id="additional-faq1">
+                    <p>We accept various payment methods including credit/debit cards, PayPal, and bank transfers.
+                        </p>
+                </div>
+    
+                <button class="toggle-button bg-dark" data-target="#additional-faq2">How can I cancel my order?</button>
+                <div class="toggle-content bg-secondary" id="additional-faq2">
+                    <p>You can cancel your order within 24 hours of placing it by contacting our customer support team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    
+    <!-- JavaScript for Accordion Menu -->
+    <script>
+    document.querySelectorAll('.accordion-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+    
+            button.classList.toggle('active');
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    });
+    </script>
+    
+    <!-- JavaScript for Content Toggle -->
+    <script>
+    document.querySelectorAll('.toggle-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const target = document.querySelector(button.getAttribute('data-target'));
+            
+            if (target.style.display === "block") {
+                target.style.display = "none";
+            } else {
+                target.style.display = "block";
+            }
+        });
+    });
+    </script>
+
     <!-- Footer-->
     <!-- Footer-->
     <footer class="footer py-4">
+        
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-start">
