@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("assets/img/header-bg.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #333;
+            background-color: #f0c75e; /* Yellowish color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e0b24d; /* Slightly darker yellow on hover */
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <link rel="stylesheet" href="css/spapp.css" />
+</head>
+<body>
+ 
+    <main id="spapp" role="main">
+        <section id="view_2"></section>
+       
+        <section id="view_1" data-load="view_1.html"></section>
+    </main>
+    <br>
+    <div class="container" style="border: 0; ">
+        <h1>Are you ready?</h1>
+        <a href="#view_2"><button>Let's Go</button></a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="js/jquery.spapp.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

@@ -341,10 +341,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque,
-                        laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                    <a href="aboutme.html" class="btn btn-primary btn-xl text-uppercase">View More</a>
                 </div>
             </div>
+            
         </div>
     </section>
     <!-- Clients-->
@@ -556,45 +556,104 @@
 
 
 </script>
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- COMMENTS-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Reviews</title>
+    <!-- Add CSS for toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
 
+<body>
+    <section class="page-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Guitar Reviews</h2>
+                <h3 class="section-subheading text-muted">Comments</h3>
+            </div>
+            <div id="comments-section" class="mt-3">
+                <!-- Comments will be loaded here dynamically -->
+            </div>
+        </div>
+    </section>
 
-<section class="page-section">
+    <!-- Add jQuery and toastr JavaScript files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <div class="container">
-    <div class="text-center"> <h2 class="section-heading text-uppercase">Guitar Reviews</h2>
-        <h3 class="section-subheading text-muted">Comments</h3>
-    </div>
-    <div id="comments-section" class="mt-3">
-      <!-- Comments will be loaded here dynamically -->
-    </div>
-  </div>
+    <script>
+        $(document).ready(function() {
+            // Function to delete a comment
+            function deleteComment(index) {
+                // Simulate deletion (not actually deleting from file)
+                console.log('Comment deleted at index:', index);
+                // Show toastr notification
+                toastr.success('Comment deleted successfully.');
+                // Remove comment box from UI
+                $('#comment-' + index).remove();
+            }
 
+            // Function to edit a comment
+            function editComment(index) {
+                // Simulate editing (not actually editing in file)
+                console.log('Edit comment at index:', index);
+                var newComment = prompt('Edit the comment:', $('#comment-' + index + ' p').text());
+                if (newComment !== null) {
+                    // Update comment text in UI
+                    $('#comment-' + index + ' p').text(newComment);
+                    // Show toastr notification
+                    toastr.success('Comment edited successfully.');
+                }
+            }
 
-  <script>
-    $(document).ready(function() {
-      $.ajax({
-        url: 'comments.json',
-        method: 'GET',
-        dataType: 'json',
-        success: function(data) {
-          var commentsSection = $('#comments-section');
-          data.comments.forEach(function(comment) {
-            var commentBox = $('<div class="comment-box"></div>');
-            commentBox.append('<ul> <li> <h5> <u>' + comment.username + ' </u> </h5></li></ul>');
-            commentBox.append('<p>' + comment.comment + '</p>');
-            commentsSection.append(commentBox);
-          });
-        },
-        error: function() {
-          alert('Failed to load comments.');
-        }
-      });
-    });
-  </script>
-   
-</section>
+            // Function to create comment box
+            function createCommentBox(comment, index) {
+                var commentBox = $('<div class="comment-box" id="comment-' + index + '"></div>');
+                commentBox.append('<ul><li><h5><u>' + comment.username + '</u></h5></li></ul>');
+                commentBox.append('<p>' + comment.comment + '</p>');
+                // Add Edit and Delete buttons with inline CSS for styling
+                var editButton = $('<button class="edit-btn" style="background-color: #007bff; color: #ffffff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 5px;">Edit</button>');
+                var deleteButton = $('<button class="delete-btn" style="background-color: #dc3545; color: #ffffff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Delete</button>');
+                commentBox.append(editButton);
+                commentBox.append(deleteButton);
+                return commentBox;
+            }
+
+            // Handle click events for Edit and Delete buttons using event delegation
+            $('#comments-section').on('click', '.edit-btn', function() {
+                var index = $(this).closest('.comment-box').attr('id').split('-')[1];
+                editComment(index);
+            });
+
+            $('#comments-section').on('click', '.delete-btn', function() {
+                var index = $(this).closest('.comment-box').attr('id').split('-')[1];
+                deleteComment(index);
+            });
+
+            $.ajax({
+                url: 'comments.json',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var commentsSection = $('#comments-section');
+                    data.comments.forEach(function(comment, index) {
+                        var commentBox = createCommentBox(comment, index);
+                        commentsSection.append(commentBox);
+                    });
+                },
+                error: function() {
+                    toastr.error('Failed to load comments.');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
 
 
     <section class="page-section" id="faq">
