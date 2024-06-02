@@ -371,192 +371,137 @@
             </div>
         </div>
     </div>
- 
-<!-- CONTACT-->
-<section class="page-section" id="contact">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-muted">Feel free to ask any questions.</h3>
+    <!-- CONTACT-->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Contact Us</h2>
+                <h3 class="section-subheading text-muted">Feel free to ask any questions.</h3>
+            </div>
+            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" name="name" id="name" type="text" placeholder="Your Name *" data-sb-validations="required">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="phone" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required">
+                        </div>
+                        <div class="form-group">
+                            <!-- Date picker input -->
+                            <input class="form-control" name="date" id="date" type="text" placeholder="Preferred Contact Date *" data-sb-validations="required,date">
+                            <div class="invalid-feedback" data-sb-feedback="date:required">A date is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="password" id="password" type="password" placeholder="Your Password *" data-sb-validations="required,passwordStrength">
+                            <div id="password-strength" class="text-muted">Password strength: </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send Message</button>
+                </div>
+                <div class="text-center">
+                    <!-- Success Message -->
+                    <div class="alert alert-success mt-3 d-none" id="submitSuccessMessage" role="alert">
+                        Form submission successful! Data is saved.
+                    </div>
+                    <!-- Error Message -->
+                    <div class="alert alert-danger mt-3 d-none" id="submitErrorMessage" role="alert">
+                        Error sending message!
+                    </div>
+                </div>
+            </form>
         </div>
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input class="form-control" name="name" id="name" type="text" placeholder="Your Name *" data-sb-validations="required">
-                       
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email">
-                        
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" name="phone" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required">
-                        
-                    </div>
-                    <div class="form-group">
-                        <!-- Date picker input -->
-                        <input class="form-control" name="date" id="date" type="text" placeholder="Preferred Contact Date *" data-sb-validations="required,date">
-                        <div class="invalid-feedback" data-sb-feedback="date:required">A date is required.</div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <textarea class="form-control" name="message" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
-                        
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" name="password" id="password" type="password" placeholder="Your Password *" data-sb-validations="required,passwordStrength">
-                        
-                        <div id="password-strength" class="text-muted" style="color: aliceblue !important;">Password strength: </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send Message</button>
-            </div>
-            <div class="text-center">
-                <!-- Success Message -->
-                <div class="alert alert-success mt-3 d-none" id="submitSuccessMessage" role="alert">
-                    Form submission successful! Data is saved.
-                </div>
-                <!-- Error Message -->
-                <div class="alert alert-danger mt-3 d-none" id="submitErrorMessage" role="alert">
-                    Error sending message!
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
-
-
-<script>
-   $(document).ready(function() {
-    // Initialize date picker
-    $('#date').datepicker({
-        format: 'mm/dd/yyyy',
-        autoclose: true
-    });
-
-    // Password strength indicator
-    $('#password').on('keyup', function() {
-        var password = $(this).val();
-        var strength = checkPasswordStrength(password);
-        $('#password-strength').text('Password strength: ' + strength);
-    });
-
-    function checkPasswordStrength(password) {
-        var strength = 0;
-
-        // If password contains both lower and uppercase characters, increase strength
-        if (password.match(/[a-z]/) && password.match(/[A-Z]/)) {
-            strength += 1;
+    </section>
+    
+ 
+    
+    <script>
+    $(document).ready(function() {
+        // Initialize date picker
+        $('#date').datepicker({
+            format: 'mm/dd/yyyy',
+            autoclose: true
+        });
+    
+        // Password strength indicator
+        $('#password').on('keyup', function() {
+            var password = $(this).val();
+            var strength = checkPasswordStrength(password);
+            $('#password-strength').text('Password strength: ' + strength);
+        });
+    
+        function checkPasswordStrength(password) {
+            var strength = 0;
+    
+            if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength += 1;
+            if (password.match(/\d+/)) strength += 1;
+            if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)) strength += 1;
+            if (password.length >= 8) strength += 1;
+    
+            if (strength < 2) return 'WEAK';
+            else if (strength == 2) return 'MEDIUM';
+            else return 'STRONG';
         }
-
-        // If password contains at least one number, increase strength
-        if (password.match(/\d+/)) {
-            strength += 1;
-        }
-
-        // If password contains at least one special character, increase strength
-        if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)) {
-            strength += 1;
-        }
-
-        // If password length is greater than or equal to 8, increase strength
-        if (password.length >= 8) {
-            strength += 1;
-        }
-
-        // Determine password strength based on the strength score
-        if (strength < 2) {
-            return 'WEAK';
-        } else if (strength == 2) {
-            return 'MEDIUM';
-        } else {
-            return 'STRONG';
-        }
-    }
-
-    // jQuery Validation
-    $('#contactForm').validate({
-        rules: {
-            name: {
-                required: true
+    
+        // jQuery Validation
+        $('#contactForm').validate({
+            rules: {
+                name: { required: true },
+                email: { required: true, email: true },
+                phone: { required: true },
+                message: { required: true },
+                password: { required: true, minlength: 8 }
             },
-            email: {
-                required: true,
-                email: true
+            messages: {
+                name: { required: "Please enter your name" },
+                email: { required: "Please enter your email", email: "Please enter a valid email address" },
+                phone: { required: "Please enter your phone number" },
+                message: { required: "Please enter your message" },
+                password: { required: "Please enter a password", minlength: "Your password must be at least 8 characters long" }
             },
-            phone: {
-                required: true
+            submitHandler: function(form) {
+                // Serialize form data
+                var formData = $(form).serializeArray();
+                var dataObject = {};
+                $.each(formData, function(i, field) {
+                    dataObject[field.name] = field.value;
+                });
+    
+                // Simulate saving data
+                setTimeout(function() {
+                    // Show success message
+                    $('#submitSuccessMessage').removeClass('d-none');
+                    $('#submitErrorMessage').addClass('d-none');
+    
+                    // Show success message using toastr
+                    toastr.success('Form submission successful! Data is saved.');
+    
+                    // Reset form
+                    form.reset();
+                }, 500); // Simulate delay
+    
+                return false; // Prevent the form from submitting
             },
-            message: {
-                required: true
-            },
-            password: {
-                required: true,
-                minlength: 8 // You can set the minimum length requirement for the password
+            errorPlacement: function(error, element) {
+                if (element.attr("name") == "password") {
+                    error.insertAfter("#password-strength");
+                } else {
+                    error.insertAfter(element);
+                }
             }
-        },
-        messages: {
-            name: {
-                required: "Please enter your name"
-            },
-            email: {
-                required: "Please enter your email",
-                email: "Please enter a valid email address"
-            },
-            phone: {
-                required: "Please enter your phone number"
-            },
-            message: {
-                required: "Please enter your message"
-            },
-            password: {
-                required: "Please enter a password",
-                minlength: "Your password must be at least 8 characters long"
-            }
-        },
-        submitHandler: function(form) {
-    // Serialize form data
-    var formData = $(form).serialize();
-
-    // Simulate AJAX request
-    $.ajax({
-        type: "POST", // Or "GET" depending on your requirement
-        url: "your_dummy_endpoint", // This URL can be anything since we're not actually sending data to a server
-        data: formData,
-        success: function(response) {
-            // Show success message using toastr
-            toastr.success('Form submission successful! Data is saved.');
-
-            // Reset form
-            form.reset();
-        },
-        error: function(xhr, status, error) {
-            // Show error message using toastr or other means
-            toastr.error('Form submission failed! Please try again later.');
-        }
+        });
     });
-
-    return false; // Prevent the form from submitting
-},
-
-        errorPlacement: function(error, element) {
-            // Custom error placement
-            if (element.attr("name") == "password") {
-                error.insertAfter("#password-strength");
-            } else {
-                error.insertAfter(element);
-            }
-        }
-    });
-});
-
-
-</script>
-
+    </script>
 
 <body>
     <section class="page-section">
