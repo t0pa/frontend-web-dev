@@ -657,6 +657,43 @@
     });
     </script>
 
+<!--Exteral API-->
+<h1>Latest News Headlines</h1>
+<ul style="color: black;" id="news-list"></ul>
+
+<script>
+    async function fetchNews() {
+        const apiKey = 'fd095ad481dc4c03a5a128574fc206d7';
+        const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Failed to fetch news data');
+            }
+            const data = await response.json();
+            return data.articles;
+        } catch (error) {
+            console.error('Error fetching news data:', error);
+            return null;
+        }
+    }
+
+    function displayNews(articles) {
+        const newsList = document.getElementById('news-list');
+        if (!articles) {
+            newsList.innerHTML = '<li>Error fetching news data</li>';
+            return;
+        }
+        newsList.innerHTML = articles.map(article => `<li><a href="${article.url}" target="_blank">${article.title}</a></li>`).join('');
+    }
+
+    // Fetch news articles when the page loads
+    window.addEventListener('DOMContentLoaded', async () => {
+        const articles = await fetchNews();
+        displayNews(articles);
+    });
+</script>
     <!-- Footer-->
     <!-- Footer-->
     <footer class="footer py-4">
