@@ -10,3 +10,22 @@
   z-index: 1000; /* Ensure it stays on top */
 }
 
+/* App.css */
+
+@media (max-width: 768px) {
+  .timer-wrapper {
+    font-size: 0.4em; /* Further reduce font size for smaller screens */
+    padding: 3px; /* Reduce padding */
+    top: 15px;
+    left: 100px;
+  }
+}
+
+
+
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

@@ -30,7 +30,7 @@ function Navbar() {
         
        
         <li>
-          <Link to="/posts" onClick={closeMenu}>Posts</Link>
+          <Link to="/faq" onClick={closeMenu}>FAQ</Link>
         </li>
         <li>
           <Link to="/about" onClick={closeMenu}>About</Link>
