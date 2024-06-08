@@ -3,29 +3,37 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
-import About from "./pages/About"; // Import About page
-import Products from "./pages/Products"; // Import Products page
+import About from "./pages/About";
+import Products from "./pages/Products";
 import Posts from "./pages/Posts";
-import Timer from './components/Timer'; // Import the Timer component
+import Timer from './components/Timer';
+import Footer from './components/Footer'; // Import the Footer component
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from './theme';
 import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <div className="container">
-        <div className="timer-wrapper">
-          <Timer /> {/* Include the Timer component here */}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Navbar />
+        <div className="container">
+          <div className="timer-wrapper">
+            <Timer />
+          </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
         </div>
-        <Routes>
-          <Route path="/" element={<Home />} /> {/* Route for Home */}
-          <Route path="/about" element={<About />} /> {/* Route for About */}
-          <Route path="/products" element={<Products />} /> {/* Route for Products */}
-          <Route path="/contact" element={<Contact />} /> {/* Route for Contact */}
-          <Route path="/posts" element={<Posts />} /> {/* Route for Posts */}
-        </Routes>
-      </div>
-    </Router>
+        <Footer /> {/* Include the Footer component here */}
+      </Router>
+    </ThemeProvider>
   );
 }
 

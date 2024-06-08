@@ -1,14 +1,14 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button"; // Import MUI Button component
-import "./Home.css";
-import printerImage from "./printer.jpg";
+import React from 'react';
+import { Button, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import printerImage from './printer.jpg';
+import './Home.css';
 
 function Home() {
   const navigate = useNavigate();
 
   const handleBuyNowClick = () => {
-    navigate("/products");
+    navigate('/products');
   };
 
   return (
@@ -17,11 +17,18 @@ function Home() {
         <img src={printerImage} alt="3D Printer" />
       </div>
       <div className="content">
-        <h1>Welcome to Our 3D Printer Store</h1>
-        <p>Get your high-quality 3D printer today!</p>
-        <Button variant="contained" color="primary" onClick={handleBuyNowClick}>
+        <Typography variant="h1" className="home-title" >Welcome to Our 3D Printer Store</Typography>
+        <Typography variant="body1" className="home-text">
+          Get your high-quality 3D printer today!
+        </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleBuyNowClick}
+          style={{ marginTop: '10px' }}
+        >
           Buy Now
-        </Button> {/* Modified button */}
+        </Button>
       </div>
     </div>
   );

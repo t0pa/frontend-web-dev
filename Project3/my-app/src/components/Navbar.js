@@ -23,14 +23,17 @@ function Navbar() {
         <li>
           <Link to="/" onClick={closeMenu}>Home</Link>
         </li>
-        <li>
-          <Link to="/about" onClick={closeMenu}>About</Link>
-        </li>
+
         <li>
           <Link to="/products" onClick={closeMenu}>Products</Link>
         </li>
+        
+       
         <li>
           <Link to="/posts" onClick={closeMenu}>Posts</Link>
+        </li>
+        <li>
+          <Link to="/about" onClick={closeMenu}>About</Link>
         </li>
         <li>
           <Link to="/contact" onClick={closeMenu}>Contact</Link>
