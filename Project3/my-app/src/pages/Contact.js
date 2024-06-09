@@ -4,6 +4,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
+import { useTheme, useMediaQuery } from "@mui/material";
+import contactImage from './contactus.jpg';
+import './Contact.css';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -60,48 +63,55 @@ function Contact() {
     setIsFormSubmitted(false);
   };
 
+  const theme = useTheme();
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
-    <div>
-      <Typography variant="h2" gutterBottom>
-        Contact Us
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          name="name"
-          label="Name"
-          fullWidth
-          margin="normal"
-          value={formData.name}
-          onChange={handleChange}
-          error={errors.name ? true : false}
-          helperText={errors.name}
-        />
-        <TextField
-          name="email"
-          label="Email"
-          fullWidth
-          margin="normal"
-          value={formData.email}
-          onChange={handleChange}
-          error={errors.email ? true : false}
-          helperText={errors.email}
-        />
-        <TextField
-          name="message"
-          label="Message"
-          fullWidth
-          multiline
-          rows={4}
-          margin="normal"
-          value={formData.message}
-          onChange={handleChange}
-          error={errors.message ? true : false}
-          helperText={errors.message}
-        />
-        <Button variant="contained" color="primary" type="submit">
-          Submit
-        </Button>
-      </form>
+    <div className="contact-page-container">
+      <div className="contact-background-image" style={{ backgroundImage: `url(${contactImage})` }}></div>
+      <div className="contact-content">
+        <Typography variant={isSmallScreen ? 'h4' : isMediumScreen ? 'h3' : 'h1'} className="contact-title">
+          Contact Us
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            name="name"
+            label="Name"
+            fullWidth
+            margin="normal"
+            value={formData.name}
+            onChange={handleChange}
+            error={errors.name ? true : false}
+            helperText={errors.name}
+          />
+          <TextField
+            name="email"
+            label="Email"
+            fullWidth
+            margin="normal"
+            value={formData.email}
+            onChange={handleChange}
+            error={errors.email ? true : false}
+            helperText={errors.email}
+          />
+          <TextField
+            name="message"
+            label="Message"
+            fullWidth
+            multiline
+            rows={4}
+            margin="normal"
+            value={formData.message}
+            onChange={handleChange}
+            error={errors.message ? true : false}
+            helperText={errors.message}
+          />
+          <Button variant="contained" color="primary" type="submit">
+            Submit
+          </Button>
+        </form>
+      </div>
       <Snackbar open={isFormSubmitted} autoHideDuration={6000} onClose={handleCloseSnackbar}>
         <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: "100%" }}>
           Your message has been sent successfully!

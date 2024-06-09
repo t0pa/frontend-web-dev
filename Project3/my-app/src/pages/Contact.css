@@ -1,0 +1,96 @@
+.contact-page-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    overflow: hidden;
+  }
+  
+  .contact-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Cover the entire container */
+    background-position: center;
+    z-index: -1; /* Place it behind the content */
+  }
+  
+  .contact-content {
+    position: relative;
+    z-index: 1; /* Place it above the background image */
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    color: #383434; /* Change to the primary color of your theme */
+    text-align: center;
+    max-width: 80%; /* Limit the max-width for better readability */
+    margin: 20px; /* Add margin to avoid touching the edges on smaller screens */
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Ensure enough space from the top on larger screens */
+  @media screen and (min-width: 1200px) {
+    .contact-content {
+      margin-top: 100px; /* Adjust top margin for larger screens */
+    }
+  }
+  
+  @media screen and (max-width: 900px) {
+    .contact-content {
+      padding: 15px;
+    }
+    .contact-title {
+      font-size: 32px; /* Adjust font size for medium screens */
+    }
+    .contact-text {
+      font-size: 16px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .contact-content {
+      padding: 10px;
+    }
+    .contact-title {
+      font-size: 24px; /* Adjust font size for smaller screens */
+    }
+    .contact-text {
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .contact-content {
+      padding: 8px;
+      margin-top: 60px; /* Adjust top margin for mobile m screens */
+    }
+    .contact-title {
+      font-size: 20px; /* Adjust font size for mobile m screens */
+    }
+    .contact-text {
+      font-size: 12px;
+    }
+  }
+  
+  @media screen and (max-width: 360px) {
+    .contact-content {
+      padding: 5px;
+      margin-top: 40px; /* Adjust top margin for mobile s screens */
+    }
+    .contact-title {
+      font-size: 18px; /* Adjust font size for mobile s screens */
+    }
+    .contact-text {
+      font-size: 10px;
+    }
+  }
+  
