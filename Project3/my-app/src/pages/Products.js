@@ -15,10 +15,10 @@ const Products = () => {
             />
             <CardContent>
               <Typography variant="h6" component="div">
-                Product 1
+                3D printer max
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Description of Product 1
+                Our fastest 3D printer
               </Typography>
             </CardContent>
           </Card>
@@ -33,10 +33,10 @@ const Products = () => {
             />
             <CardContent>
               <Typography variant="h6" component="div">
-                Product 2
+                Hollow 3D printer
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Description of Product 2
+                Vibrant colors
               </Typography>
             </CardContent>
           </Card>
@@ -51,10 +51,10 @@ const Products = () => {
             />
             <CardContent>
               <Typography variant="h6" component="div">
-                Product 3
+                Green 3D plastic
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Description of Product 3
+                Durable
               </Typography>
             </CardContent>
           </Card>
@@ -69,10 +69,10 @@ const Products = () => {
             />
             <CardContent>
               <Typography variant="h6" component="div">
-                Product 4
+                3D printer x-Series
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Description of Product 4
+                Best quality overall
               </Typography>
             </CardContent>
           </Card>
@@ -87,10 +87,10 @@ const Products = () => {
             />
             <CardContent>
               <Typography variant="h6" component="div">
-                Product 5
+                Blue 3D plastic
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Description of Product 5
+                Vibrant colors
               </Typography>
             </CardContent>
           </Card>
@@ -105,10 +105,10 @@ const Products = () => {
             />
             <CardContent>
               <Typography variant="h6" component="div">
-                Product 6
+                Dark Green plastic
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Description of Product 6
+                Best color 
               </Typography>
             </CardContent>
           </Card>
